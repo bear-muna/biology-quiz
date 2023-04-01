@@ -1,0 +1,39 @@
+:root {
+    --border: 1px solid black;
+}
+
+* {
+    border: var(--border);
+}
+
+
+#container {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#high-score-title {
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#high-score-list {
+    height: 65%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    height: 19vh;
+    border: var(--border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -116,4 +116,4 @@ function verification(event) {
 
 startEl.addEventListener("click", start);
 
-answerEl.addEventListener("click", verification)
+answerEl.addEventListener("click", verification);
