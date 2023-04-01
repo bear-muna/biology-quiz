@@ -9,6 +9,7 @@ console.log(cardEl);
 // variables
 
 var count = 4;
+secondsLeft = 120;
 
 // store the prompts as objects
 
@@ -62,6 +63,22 @@ function displayText() {
 
         console.log(prompt.opt);
     }
+};
+
+function setTimer() {
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timerEl.textContent = secondsLeft + " seconds remaining!";
+
+        if (secondsLeft == 0) {
+            clearInterval(timerInterval);            
+        } else {
+            return timerInterval;
+        }
+
+
+    }, 1000);
 }
 
 displayText();
+setTimer();
