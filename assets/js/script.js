@@ -8,8 +8,12 @@ console.log(cardEl);
 
 // variables
 
-var count = 4;
-secondsLeft = 120;
+var prompt = [];
+var countForPrompt = 4
+var countForCard = 4;
+var secondsLeft = 120;
+var correctAnswer = 0;
+var timerInterval;
 
 // store the prompts as objects
 
@@ -39,34 +43,36 @@ var promptD = {
 var questions = [promptA, promptB, promptC, promptD];
 
 function displayText() {
-    prompt = questions[Math.floor(Math.random() * questions.length)];
+
+    var num1 = Math.floor(Math.random() * countForPrompt);
+
+    prompt = questions[num1];
 
     questionEl.textContent = prompt.question;
 
-    // TODO: Some opt are the same in multiple cards
+    questions.splice(num1, 1);
+    
+    countForPrompt--;
 
     for (let i = 0; i < cardEl.length; i++) {
 
-        var num = Math.floor(Math.random() * count);
+        var num2 = Math.floor(Math.random() * countForCard);
 
-        console.log(num);
+        cardEl[i].textContent = prompt.opt[num2];
 
-        console.log(prompt);
-
-        console.log(prompt.opt);
-
-        cardEl[i].textContent = prompt.opt[num];
+        cardEl[i].dataset.value = prompt.opt[num2];
         
-        prompt.opt.splice(num, 1);
+        prompt.opt.splice(num2, 1);
 
-        count--;
+        countForCard--;
 
-        console.log(prompt.opt);
     }
+
+    countForCard = 4;
 };
 
 function setTimer() {
-    var timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
         secondsLeft--;
         timerEl.textContent = secondsLeft + " seconds remaining!";
 
@@ -78,7 +84,36 @@ function setTimer() {
 
 
     }, 1000);
-}
+};
 
-displayText();
-setTimer();
+function start(event) {
+
+    displayText();
+    setTimer(); 
+};
+
+function verification(event) {
+    var userAnswer = event.target;
+
+    if (userAnswer.matches(".card")) {
+        var value = userAnswer.getAttribute("data-value");
+
+        if (value === prompt.ans && !(questions.length === 0)) {
+            
+            displayText();
+            correctAnswer++;
+
+        } else {
+            clearInterval(timerInterval);
+            questionEl.textContent = "CONGRATULATIONS! YOU WON!";
+            console.log(secondsLeft);
+            return secondsLeft;
+        }
+
+    }
+
+};
+
+startEl.addEventListener("click", start);
+
+answerEl.addEventListener("click", verification)
