@@ -6,13 +6,12 @@
     border: var(--border);
 }
 
-
-#container {
-    height: 80vh;
+header {
+    height: 15vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: var(--border);
 }
 
 #high-score-title {
@@ -20,18 +19,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: var(--border);
 }
 
-#high-score-list {
-    height: 65%;
-    width: 80%;
+main {
+    height: 70vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+
+#high-score-list {
+    height: 90%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: var(--border);
+}
+
 footer {
-    height: 19vh;
+    height: 14vh;
     border: var(--border);
     display: flex;
     justify-content: center;
