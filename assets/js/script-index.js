@@ -34,7 +34,7 @@ var promptE = {
     opt: ["Cytoplasm", "Mitochondria", "Endoplasmic Reticulum", "Nucleus"],
 }
 var promptF = {
-    question: "Osmosis is the process of what permeating throught the cellular membrane?",
+    question: "Osmosis is the process of what permeating throughout the cellular membrane?",
     ans: "Water",
     opt: ["Nucleotide", "Water", "Proteins", "Fatty Acids"],
 }
