@@ -5,6 +5,7 @@ var answerEl = document.querySelector("#answer");
 var cardEl = document.querySelectorAll(".card");
 
 var submitBut = document.querySelector("#submit");
+var usernameText = document.querySelector("#username");
 
 console.log(cardEl);
 
@@ -123,20 +124,29 @@ function verification(event) {
 
 };
 
-// function submission(event) {
-//     event.preventDefault();
+function submission(event) {
+    event.preventDefault();
 
-//     var user = {
-//         name: username.value,
-//         score: secondsLeft,
-//     }
+    var user = {
+        name: username.value,
+        score: secondsLeft,
+    }
 
-//     localStorage.setItem("user", JSON.stringify(user));
-// }
+    localStorage.setItem("user", JSON.stringify(user));
 
-// submitBut.addEventListener("click", submission);
+    retrieve();
+
+}
+
+function retrieve() {
+    var parseUsername = JSON.parse(localStorage.getItem("user"));
+
+    console.log(parseUsername);
+}
 
 
+
+submitBut.addEventListener("click", submission);
 
 startEl.addEventListener("click", start);
 

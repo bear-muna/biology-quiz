@@ -48,6 +48,10 @@ form {
     justify-content: space-between;
 }
 
+#username {
+    width: 80%;
+}
+
 #buttons-sec {
     width: 20%;
     display: flex;
