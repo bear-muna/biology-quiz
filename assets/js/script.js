@@ -4,6 +4,8 @@ var timerEl = document.querySelector("#timer");
 var answerEl = document.querySelector("#answer");
 var cardEl = document.querySelectorAll(".card");
 
+var submitBut = document.querySelector("#submit");
+
 console.log(cardEl);
 
 // variables
@@ -14,6 +16,12 @@ var countForCard = 4;
 var secondsLeft = 120;
 var correctAnswer = 0;
 var timerInterval;
+var userScore;
+
+
+// Object to store into local storage
+
+
 
 // store the prompts as objects
 
@@ -107,12 +115,28 @@ function verification(event) {
             clearInterval(timerInterval);
             questionEl.textContent = "CONGRATULATIONS! YOU WON!";
             console.log(secondsLeft);
-            return secondsLeft;
+            userScore = secondsLeft;
+            return userScore;
         }
 
     }
 
 };
+
+// function submission(event) {
+//     event.preventDefault();
+
+//     var user = {
+//         name: username.value,
+//         score: secondsLeft,
+//     }
+
+//     localStorage.setItem("user", JSON.stringify(user));
+// }
+
+// submitBut.addEventListener("click", submission);
+
+
 
 startEl.addEventListener("click", start);
 

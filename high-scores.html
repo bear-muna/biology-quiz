@@ -13,12 +13,23 @@
         <h1 id="high-score-title">HIGH SCORES</h1>
     </header>
     <main>
+        <form>
+            <section id="form-name">
+                <label for="username">name</label>
+                <textarea name="username" id="name-input" placeholder="Input Name" cols="30" rows="1"></textarea>
+            </section>
+            <section id="buttons-sec">
+                <button id="submit">Submit</button>
+                <button id="reset">Reset</button>
+            </section>
+        </form>
         <section id="high-score-list">
-            
+            <ul id="list"></ul>
         </section>
     </main>
     <footer>
         <h2 id="credits">Credits..</h2>
     </footer>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>

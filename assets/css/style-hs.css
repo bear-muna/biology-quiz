@@ -7,7 +7,7 @@
 }
 
 header {
-    height: 15vh;
+    height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,6 +16,8 @@ header {
 
 #high-score-title {
     height: 30%;
+    font-size: 500%;
+    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,13 +28,36 @@ main {
     height: 70vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+
+}
+
+form {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: var(--border);
+}
+
+#form-name {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#buttons-sec {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 
 #high-score-list {
-    height: 90%;
+    height: 85%;
     width: 80%;
     display: flex;
     justify-content: center;
@@ -41,7 +66,7 @@ main {
 }
 
 footer {
-    height: 14vh;
+    height: 9vh;
     border: var(--border);
     display: flex;
     justify-content: center;
