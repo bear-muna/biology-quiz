@@ -1,7 +1,9 @@
 var submitBut = document.querySelector("#submit");
 var usernameText = document.querySelector("#username");
-var list = document.querySelector("#list");
+var listName = document.querySelector("#listname");
+var listScore = document.querySelector("#listscore");
 var resetBut = document.querySelector("#reset");
+var list = document.querySelector("#list");
 
 var userScore;
 var usersArray = [];
@@ -24,19 +26,31 @@ function retrieveArray() {
 }
 
 function renderArray() {
-    list.textContent = "";
+
+    listName.textContent = "";
 
     for (let i = 0; i < usersArray.length; i++) {
-        var arr = usersArray[i];
+        var arrName = usersArray[i].name;
 
-        var li = document.createElement("li");
-        li.textContent = arr;
-        li.setAttribute("data-index", i);
+        var liName = document.createElement("li");
+        liName.textContent = arrName;
+        liName.setAttribute("data-index", i);
 
-        list.appendChild(li);
-
-
+        listName.appendChild(liName);
     }
+
+    listScore.textContent = "";
+
+    for (let i = 0; i < usersArray.length; i++) {
+        var arrScore = usersArray[i].score;
+
+        var liScore = document.createElement("li");
+        liScore.textContent = arrScore;
+        liScore.setAttribute("data-index", i);
+
+        listScore.appendChild(liScore);
+    }
+
 }
 
 // push user object into an array
@@ -69,14 +83,17 @@ function submission(event) {
 function resetList(event) {
     event.preventDefault();
 
+    usersArray = [];
+
     var parseArray = JSON.parse(localStorage.getItem("usersArray"));
 
     if (parseArray !== null) {
 
         localStorage.clear();
 
-        list.textContent = "";
+        listName.textContent = "";
 
+        listScore.textContent = "";
     } 
 
 }
@@ -86,3 +103,5 @@ submitBut.addEventListener("click", submission);
 resetBut.addEventListener("click", resetList);
 
 retrieveArray();
+
+console.log(usersArray);
