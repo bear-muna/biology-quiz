@@ -9,24 +9,39 @@ console.log(cardEl);
 // store the prompts as objects
 
 var promptA = {
-    question: "Answer: A",
-    ans: "A",
-    opt: ["A", "B", "C", "D"],
+    question: "What is the center of an atom called?",
+    ans: "Nucleus",
+    opt: ["Nucleus", "Proton", "Quark", "Electron"],
 }
 var promptB = {
-    question: "Answer: B",
-    ans: "B",
-    opt: ["A", "B", "C", "D"],
+    question: "What is the colored part of an eye called?",
+    ans: "Iris",
+    opt: ["Iris", "Pupil", "Fovea", "Cornea"],
 }
 var promptC = {
-    question: "Answer: C",
-    ans: "C",
-    opt: ["A", "B", "C", "D"],
+    question: "What is the range of the pH scale?",
+    ans: "0-14",
+    opt: ["1-10", "0-14", "1-7", "1-99"],
 }
 var promptD = {
-    question: "Answer: D",
-    ans: "D",
-    opt: ["A", "B", "C", "D"],
+    question: "Where in the cell are proteins created?",
+    ans: "Ribosome",
+    opt: ["Mitochondria", "Plasma Membrane", "Ribosome", "Nucleus"],
+}
+var promptE = {
+    question: "DNA duplication occurs where in the cell?",
+    ans: "Nucleus",
+    opt: ["Cytoplasm", "Mitochondria", "Endoplasmic Reticulum", "Nucleus"],
+}
+var promptF = {
+    question: "Osmosis is the process of what permeating throught the cellular membrane?",
+    ans: "Water",
+    opt: ["Nucleotide", "Water", "Proteins", "Fatty Acids"],
+}
+var promptG = {
+    question: "What is the largest organ in the body?",
+    ans: "Skin",
+    opt: ["Skin", "Small Intestine", "Heart", "Brain"],
 }
 
 // variables
@@ -34,10 +49,9 @@ var promptD = {
 var prompt = [];
 var countForCard = 4;
 var secondsLeft = 120;
-var correctAnswer = 0;
 var timerInterval;
 var userScore;
-var questions = [promptA, promptB, promptC, promptD];
+var questions = [promptA, promptB, promptC, promptD, promptE, promptF, promptG];
 
 
 // Object to store into local storage
@@ -110,7 +124,6 @@ function verification(event) {
             
             if (value === prompt.ans) {
                 displayText();
-                correctAnswer++;
             }
 
             return;
