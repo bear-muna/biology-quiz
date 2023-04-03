@@ -2,27 +2,38 @@ var submitBut = document.querySelector("#submit");
 var usernameText = document.querySelector("#username");
 
 var userScore;
+var userName;
+var usersArray = [];
+
+
+// create a user object
+
+// push user object into an array
 
 function submission(event) {
     event.preventDefault();
-
+    
     var user = {
-        name: username.value,
-        score: userScore,
+            name: userName,
+            score: userScore,
     }
 
-    localStorage.setItem("user", JSON.stringify(user));
+    user.name = username.value;
 
+    user.score = localStorage.getItem("score");
+        
+    usersArray.push(user);
+ 
+    localStorage.setItem("user", JSON.stringify(usersArray));
+    
     retrieve();
 
 }
 
 function retrieve() {
-    var parseUsername = JSON.parse(localStorage.getItem("user"));
+    var parseArray = JSON.parse(localStorage.getItem("usersArray"));
 
-    console.log(parseUsername);
+    console.log(parseArray);
 }
-
-
 
 submitBut.addEventListener("click", submission);

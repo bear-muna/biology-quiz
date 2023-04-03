@@ -114,7 +114,7 @@ function verification(event) {
             questionEl.textContent = "CONGRATULATIONS! YOU WON!";
             console.log(secondsLeft);
             userScore = secondsLeft;
-            return userScore;
+            localStorage.setItem("score", userScore);
         }
 
     }
