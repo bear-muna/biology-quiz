@@ -4,9 +4,6 @@ var timerEl = document.querySelector("#timer");
 var answerEl = document.querySelector("#answer");
 var cardEl = document.querySelectorAll(".card");
 
-var submitBut = document.querySelector("#submit");
-var usernameText = document.querySelector("#username");
-
 console.log(cardEl);
 
 // variables
@@ -123,30 +120,6 @@ function verification(event) {
     }
 
 };
-
-function submission(event) {
-    event.preventDefault();
-
-    var user = {
-        name: username.value,
-        score: secondsLeft,
-    }
-
-    localStorage.setItem("user", JSON.stringify(user));
-
-    retrieve();
-
-}
-
-function retrieve() {
-    var parseUsername = JSON.parse(localStorage.getItem("user"));
-
-    console.log(parseUsername);
-}
-
-
-
-submitBut.addEventListener("click", submission);
 
 startEl.addEventListener("click", start);
 
