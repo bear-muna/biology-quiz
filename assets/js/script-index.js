@@ -6,21 +6,6 @@ var cardEl = document.querySelectorAll(".card");
 
 console.log(cardEl);
 
-// variables
-
-var prompt = [];
-var countForPrompt = 4
-var countForCard = 4;
-var secondsLeft = 120;
-var correctAnswer = 0;
-var timerInterval;
-var userScore;
-
-
-// Object to store into local storage
-
-
-
 // store the prompts as objects
 
 var promptA = {
@@ -44,11 +29,28 @@ var promptD = {
     opt: ["A", "B", "C", "D"],
 }
 
-// Array of prompt objects
+// variables
 
+var prompt = [];
+var countForCard = 4;
+var secondsLeft = 120;
+var correctAnswer = 0;
+var timerInterval;
+var userScore;
 var questions = [promptA, promptB, promptC, promptD];
 
+
+// Object to store into local storage
+
+
+
+
+// Array of prompt objects
+
+
 function displayText() {
+
+    var countForPrompt = questions.length;
 
     var num1 = Math.floor(Math.random() * countForPrompt);
 
@@ -104,12 +106,18 @@ function verification(event) {
     if (userAnswer.matches(".card")) {
         var value = userAnswer.getAttribute("data-value");
 
-        if (value === prompt.ans && !(questions.length === 0)) {
+        while (questions.length !== 0) {
             
-            displayText();
-            correctAnswer++;
+            if (value === prompt.ans) {
+                displayText();
+                correctAnswer++;
+            }
 
-        } else {
+            return;
+
+        }
+
+        if (value === prompt.ans && questions.length === 0) {
             clearInterval(timerInterval);
             questionEl.textContent = "CONGRATULATIONS! YOU WON!";
             console.log(secondsLeft);
