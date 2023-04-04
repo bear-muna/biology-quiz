@@ -43,12 +43,17 @@ var promptG = {
     ans: "Skin",
     opt: ["Skin", "Small Intestine", "Heart", "Brain"],
 }
+var lossPrompt = {
+    question: "Sorry! Try again!",
+    opt: ["", "", "", ""],
+}
 
 // variables
 
 var prompt = [];
 var countForCard = 4;
 var secondsLeft = 120;
+var endTimerSeconds = 5;
 var timerInterval;
 var userScore;
 var questions = [promptA, promptB, promptC, promptD, promptE, promptF, promptG];
@@ -91,15 +96,23 @@ function displayText() {
     }
 
     countForCard = 4;
+
 };
 
 function setTimer() {
+
+    secondsLeft = 120;
+
     timerInterval = setInterval(function() {
         secondsLeft--;
         timerEl.textContent = secondsLeft + " seconds remaining!";
 
-        if (secondsLeft == 0) {
-            clearInterval(timerInterval);            
+        if (secondsLeft <= 0) {
+            endTimer();
+
+            questionEl.textContent = lossPrompt.question;
+
+
         } else {
             return timerInterval;
         }
@@ -110,33 +123,50 @@ function setTimer() {
 
 function start(event) {
 
-    displayText();
-    setTimer(); 
+    if (questions.length < 7) {
+        location.reload();
+    } else {
+        displayText();
+        setTimer();
+    }
+
 };
+
+function endTimer() {
+    
+    endTimerSeconds--;
+    timerEl.textContent = endTimerSeconds + " seconds until reload!";
+
+    if (endTimerSeconds === 0) {
+        location.reload();
+    }
+}
 
 function verification(event) {
     var userAnswer = event.target;
 
     if (userAnswer.matches(".card")) {
         var value = userAnswer.getAttribute("data-value");
-
+        
         while (questions.length !== 0) {
             
             if (value === prompt.ans) {
                 displayText();
+            } else {
+                secondsLeft -= 10;
             }
 
             return;
 
         }
 
-        if (value === prompt.ans && questions.length === 0) {
+       if ((value === prompt.ans && questions.length === 0)) {
             clearInterval(timerInterval);
             questionEl.textContent = "CONGRATULATIONS! YOU WON!";
             console.log(secondsLeft);
             userScore = secondsLeft;
             localStorage.setItem("score", userScore);
-        }
+        } 
 
     }
 
