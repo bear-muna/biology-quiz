@@ -1,3 +1,4 @@
+// Variables created by .querySelector
 var submitBut = document.querySelector("#submit");
 var usernameText = document.querySelector("#username");
 var listName = document.querySelector("#listname");
@@ -5,16 +6,17 @@ var listScore = document.querySelector("#listscore");
 var resetBut = document.querySelector("#reset");
 var list = document.querySelector("#list");
 
+// Variables
 var userScore;
 var usersArray = [];
 
 
-// create a user object
-
+// Used to store the array into local storage
 function storeArray() {
     localStorage.setItem("usersArray", JSON.stringify(usersArray));
 }
 
+// Grab array from local storage
 function retrieveArray() {
     var parseArray = JSON.parse(localStorage.getItem("usersArray"));
 
@@ -25,10 +27,13 @@ function retrieveArray() {
     renderArray();
 }
 
+// Function used to show user and score
 function renderArray() {
 
+    // Clears the space in order to make new elements from an array
     listName.textContent = "";
 
+    // Create separate 'li' elements for the username
     for (let i = 0; i < usersArray.length; i++) {
         var arrName = usersArray[i].name;
 
@@ -36,11 +41,14 @@ function renderArray() {
         liName.textContent = arrName;
         liName.setAttribute("data-index", i);
 
+        // appends the element into the browser
         listName.appendChild(liName);
     }
 
+    // Clears the space in order to make new elements from an array
     listScore.textContent = "";
 
+    // Create separate 'li' elements for the username
     for (let i = 0; i < usersArray.length; i++) {
         var arrScore = usersArray[i].score;
 
@@ -48,13 +56,13 @@ function renderArray() {
         liScore.textContent = arrScore;
         liScore.setAttribute("data-index", i);
 
+        // appends the element onto the browser
         listScore.appendChild(liScore);
     }
 
 }
 
-// push user object into an array
-
+// Function used the username and score into an object
 function submission(event) {
     event.preventDefault();
     
@@ -68,23 +76,20 @@ function submission(event) {
     }
 
     user.name = usernameText.value.trim();
-
     user.score = localStorage.getItem("score");
-        
     usersArray.push(user);
- 
+
     storeArray();
-    
     renderArray();
 
     usernameText.value = "";
 }
 
+// Clear the local storage
 function resetList(event) {
     event.preventDefault();
 
     usersArray = [];
-
     var parseArray = JSON.parse(localStorage.getItem("usersArray"));
 
     if (parseArray !== null) {
@@ -92,16 +97,15 @@ function resetList(event) {
         localStorage.clear();
 
         listName.textContent = "";
-
         listScore.textContent = "";
     } 
 
 }
 
+// event listener on the submit button
 submitBut.addEventListener("click", submission);
-
+// event listener on the reset button
 resetBut.addEventListener("click", resetList);
 
+// Displays current users and scores when starting page
 retrieveArray();
-
-console.log(usersArray);
