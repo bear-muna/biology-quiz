@@ -20,6 +20,10 @@ N/A
 Refer to license in repository.
 
 ## Screenshots
+![Quiz Section](./assets/images/Quiz.PNG)
+
+![High Scores Section](./assets/images/high-scores.PNG)
+
 
 ## Links
 GitHub repository: https://github.com/bear-muna/fourth-challenge
